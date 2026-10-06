@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "example-client-site",
+  "name": "Example site",
+  "clientName": "Example client",
+  "description": "Template record. Register real projects from the Library UI instead of hand-writing this file.",
+  "websiteUrl": "https://example.com",
+  "buildOrigin": "Codex",
+  "createdAt": "2026-10-01T09:00:00.000Z",
+  "updatedAt": "2026-10-01T09:00:00.000Z",
+  "status": "AWAITING_CLAUDE_REVIEW",
+  "approval": null,
+  "hudsonAcceptances": []
+}

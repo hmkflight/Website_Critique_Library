@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "projectId": "example-client-site",
+  "id": "review-001",
+  "createdAt": "2026-10-01T10:00:00.000Z",
+  "reviewer": "Claude Code",
+  "reviewedRevisionId": null,
+  "reviewedCommit": "abc1234",
+  "status": "COMPLETE",
+  "summary": "One-paragraph summary of the build and the review's overall finding.",
+  "strengths": [
+    { "title": "What works and must be preserved", "detail": "Why it works, with page/viewport.", "evidence": [] }
+  ],
+  "findings": [
+    {
+      "id": "F-001",
+      "category": "RESPONSIVE",
+      "severity": "MAJOR",
+      "title": "Short, specific title",
+      "observation": "What was seen, exactly, and where.",
+      "location": { "page": "Home", "section": "Hero", "viewport": "Mobile 390×844" },
+      "evidence": [ { "kind": "SCREENSHOT", "ref": "shot-home-mobile-before", "label": "Home, mobile, before" } ],
+      "recommendation": "The smallest change that fixes it while keeping the concept.",
+      "status": "OPEN",
+      "revisionIds": []
+    },
+    {
+      "id": "F-002",
+      "category": "MOTION",
+      "severity": "KEEP",
+      "title": "A decision to preserve",
+      "observation": "Why this motion/composition choice works.",
+      "location": { "page": "Home" },
+      "evidence": [],
+      "recommendation": "",
+      "status": "OPEN",
+      "revisionIds": []
+    }
+  ],
+  "missingInformation": ["Anything Claude could not confirm."],
+  "assessment": { "verdict": "NEEDS_REVISION", "summary": "Claude's honest overall assessment. Advisory only." }
+}

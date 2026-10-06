@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "projectId": "demo-halden-ceramics",
+  "id": "review-002",
+  "createdAt": "2026-09-17T10:00:00.000Z",
+  "reviewer": "Claude Code (demo sample, not a real review)",
+  "reviewedRevisionId": "revision-001",
+  "reviewedCommit": "d4e5f6a",
+  "status": "COMPLETE",
+  "summary": "Sample re-review of revision 1. Checkout and the mobile hero are fixed. One new keyboard issue was found. Calendar content is still missing from the client.",
+  "strengths": [
+    { "title": "Concept preserved through revision", "detail": "The asymmetric hero and glaze motion survived the mobile fix intact." }
+  ],
+  "findings": [
+    {
+      "id": "F-004", "category": "CONTENT", "severity": "MAJOR",
+      "title": "Kiln calendar uses placeholder dates",
+      "observation": "Still placeholder. The client has not supplied dates.",
+      "location": { "page": "Calendar", "section": "Upcoming firings" },
+      "evidence": [],
+      "recommendation": "Hide the section behind a “dates announced soon” note until real dates arrive, or have Hudson accept it for the preview.",
+      "status": "DEFERRED", "resolutionNotes": "Waiting on client content.", "revisionIds": []
+    },
+    {
+      "id": "F-008", "category": "ACCESSIBILITY", "severity": "MODERATE",
+      "title": "Quantity stepper is not keyboard reachable",
+      "observation": "The +/- buttons are divs with click handlers and are skipped by Tab.",
+      "location": { "page": "Product detail", "section": "Purchase panel", "viewport": "Desktop 1440×900" },
+      "evidence": [],
+      "recommendation": "Use native buttons with aria-labels.",
+      "status": "OPEN", "revisionIds": []
+    }
+  ],
+  "missingInformation": ["Real kiln firing dates for the calendar."],
+  "assessment": { "verdict": "NEEDS_REVISION", "summary": "Sample assessment: close. Fix the stepper, then this is ready for Hudson pending a decision on the calendar content." }
+}

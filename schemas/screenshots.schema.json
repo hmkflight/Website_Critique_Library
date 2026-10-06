@@ -1,0 +1,129 @@
+{
+  "$id": "wcl/screenshots.schema.json",
+  "title": "screenshots (schemaVersion 1)",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$"
+    },
+    "screenshots": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^shot-[a-z0-9-]{1,80}$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "BEFORE",
+              "AFTER"
+            ]
+          },
+          "capturedAt": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "page": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "viewport": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 10000
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 20000
+              }
+            },
+            "required": [
+              "label",
+              "width",
+              "height"
+            ]
+          },
+          "pairId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120,
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "reviewId": {
+            "type": "string",
+            "pattern": "^review-\\d{3,}$"
+          },
+          "revisionId": {
+            "type": "string",
+            "pattern": "^revision-\\d{3,}$"
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "height": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "width",
+              "height"
+            ]
+          },
+          "caption": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "demoVisual": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "role",
+          "capturedAt",
+          "page",
+          "viewport",
+          "pairId"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "projectId"
+  ]
+}

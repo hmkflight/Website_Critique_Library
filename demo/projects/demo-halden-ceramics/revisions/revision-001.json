@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "projectId": "demo-halden-ceramics",
+  "id": "revision-001",
+  "number": 1,
+  "createdAt": "2026-09-16T16:20:00.000Z",
+  "summary": "Sample revision: restored checkout, fixed mobile hero overflow and panel contrast while keeping the asymmetric layout.",
+  "changes": [
+    { "description": "Pointed Add to cart at the existing addToCart server action and added a confirmation toast.", "findingIds": ["F-001"] },
+    { "description": "Replaced the fixed 96px headline with clamp(2.75rem, 9vw, 6rem); preserved the right-offset image.", "findingIds": ["F-002"] },
+    { "description": "Switched process panel body text to the ink token (7.9:1 on celadon).", "findingIds": ["F-003"] }
+  ],
+  "filesTouched": ["app/product/[slug]/page.tsx", "components/hero.tsx", "app/about/page.tsx", "styles/tokens.css"],
+  "addressedFindingIds": ["F-001", "F-002", "F-003"],
+  "newFindingIds": [],
+  "findingUpdates": [
+    { "findingId": "F-001", "status": "FIXED", "resolutionNotes": "Verified add-to-cart on two products at desktop and mobile." },
+    { "findingId": "F-002", "status": "FIXED", "resolutionNotes": "Headline wraps cleanly at 390px and 375×667." },
+    { "findingId": "F-003", "status": "FIXED", "resolutionNotes": "Contrast re-measured at 7.9:1." }
+  ],
+  "commit": "d4e5f6a",
+  "screenshotIds": ["shot-home-desktop-after", "shot-home-mobile-after"],
+  "browserChecks": [
+    { "name": "Add to cart flow", "viewport": "Desktop 1440×900", "result": "PASS" },
+    { "name": "Add to cart flow", "viewport": "Mobile 390×844", "result": "PASS" },
+    { "name": "Hero layout", "viewport": "Short mobile 375×667", "result": "PASS" },
+    { "name": "Keyboard navigation of product page", "viewport": "Desktop 1440×900", "result": "FAIL", "notes": "Quantity stepper not reachable by Tab." }
+  ],
+  "validation": [
+    { "name": "Lint", "command": "npm run lint", "result": "PASS" },
+    { "name": "Production build", "command": "npm run build", "result": "PASS" }
+  ],
+  "limitations": ["Quantity stepper keyboard issue found during verification; logged as F-008 in the next review."]
+}

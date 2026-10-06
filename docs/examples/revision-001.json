@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "projectId": "example-client-site",
+  "id": "revision-001",
+  "number": 1,
+  "createdAt": "2026-10-01T12:00:00.000Z",
+  "summary": "What this pass changed, in one or two sentences.",
+  "changes": [ { "description": "Exact change made.", "findingIds": ["F-001"] } ],
+  "filesTouched": ["src/components/hero.tsx"],
+  "addressedFindingIds": ["F-001"],
+  "newFindingIds": [],
+  "findingUpdates": [ { "findingId": "F-001", "status": "FIXED", "resolutionNotes": "How it was verified." } ],
+  "commit": "def5678",
+  "screenshotIds": ["shot-home-mobile-after"],
+  "browserChecks": [ { "name": "Hero layout", "viewport": "Mobile 390×844", "result": "PASS" } ],
+  "validation": [ { "name": "Production build", "command": "npm run build", "result": "PASS" } ],
+  "limitations": []
+}

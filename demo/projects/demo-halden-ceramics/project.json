@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "demo-halden-ceramics",
+  "name": "Halden Ceramics (Demo)",
+  "clientName": "Fictional studio · demo data",
+  "description": "DEMO PROJECT. Halden Ceramics is a fictional small-batch pottery studio invented to show how the Library works. Nothing here is a real client, a real website, or a real Claude review.\n\nThe imagined brief: a calm, tactile portfolio and shop with an asymmetric editorial layout, slow glaze-reveal motion on the hero, and a seasonal kiln-firing calendar.",
+  "websiteUrl": "https://example.com/halden-demo",
+  "repositoryUrl": "https://example.com/halden-demo-repo",
+  "buildOrigin": "Codex",
+  "createdAt": "2026-09-14T15:00:00.000Z",
+  "updatedAt": "2026-09-18T17:30:00.000Z",
+  "status": "AWAITING_HUDSON_REVIEW",
+  "approval": null,
+  "hudsonAcceptances": [],
+  "demo": true
+}

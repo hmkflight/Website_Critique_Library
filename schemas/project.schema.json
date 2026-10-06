@@ -1,0 +1,160 @@
+{
+  "$id": "wcl/project.schema.json",
+  "title": "project (schemaVersion 1)",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "clientName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "default": "",
+      "type": "string",
+      "maxLength": 4000
+    },
+    "websiteUrl": {
+      "type": "string",
+      "maxLength": 2048,
+      "format": "uri"
+    },
+    "repositoryUrl": {
+      "type": "string",
+      "maxLength": 2048,
+      "format": "uri"
+    },
+    "localPath": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "buildOrigin": {
+      "default": "Codex",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "AWAITING_CLAUDE_REVIEW",
+        "CLAUDE_REVIEWING",
+        "REVISION_IN_PROGRESS",
+        "AWAITING_HUDSON_REVIEW",
+        "CLIENT_READY",
+        "CLIENT_FEEDBACK",
+        "COMPLETE"
+      ]
+    },
+    "thumbnailScreenshotId": {
+      "type": "string",
+      "pattern": "^shot-[a-z0-9-]{1,80}$"
+    },
+    "approval": {
+      "default": null,
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "approvedAt": {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+            },
+            "approvedBy": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "revisionId": {
+              "type": "string",
+              "pattern": "^revision-\\d{3,}$"
+            },
+            "reviewId": {
+              "type": "string",
+              "pattern": "^review-\\d{3,}$"
+            },
+            "rationale": {
+              "default": "",
+              "type": "string",
+              "maxLength": 4000
+            }
+          },
+          "required": [
+            "approvedAt",
+            "approvedBy",
+            "revisionId",
+            "reviewId"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hudsonAcceptances": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "findingId": {
+            "type": "string",
+            "pattern": "^F-\\d{3,}$"
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "acceptedAt": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          }
+        },
+        "required": [
+          "findingId",
+          "rationale",
+          "acceptedAt"
+        ]
+      }
+    },
+    "demo": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "clientName",
+    "websiteUrl",
+    "createdAt",
+    "updatedAt",
+    "status"
+  ]
+}

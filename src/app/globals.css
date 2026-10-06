@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5f2eb;
+  --color-sheet: #fbfaf6;
+  --color-ink: #17160f;
+  --color-ink-2: #45433a;
+  --color-ink-3: #6b6858;
+  --color-rule: #d9d4c6;
+  --color-rule-strong: #b9b2a0;
+  --color-mark: #b2321a;      /* proof-mark vermilion: blockers, failures */
+  --color-mark-soft: #f5e3dc;
+  --color-ok: #2f6436;        /* fixed / pass */
+  --color-ok-soft: #e1ecdc;
+  --color-warn: #835500;      /* warnings / in progress */
+  --color-warn-soft: #f4e9cf;
+  --color-note: #284f7a;      /* Hudson / human-authored */
+  --color-note-soft: #e2e9f2;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: #ead9a8;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.prose-notes {
+  line-height: 1.65;
+}
+.prose-notes h1,
+.prose-notes h2,
+.prose-notes h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin: 1.1em 0 0.4em;
+  line-height: 1.2;
+}
+.prose-notes h1 { font-size: 1.5rem; }
+.prose-notes h2 { font-size: 1.25rem; }
+.prose-notes h3 { font-size: 1.1rem; }
+.prose-notes p, .prose-notes ul, .prose-notes ol, .prose-notes blockquote, .prose-notes pre { margin: 0.6em 0; }
+.prose-notes ul { list-style: disc; padding-left: 1.25rem; }
+.prose-notes ol { list-style: decimal; padding-left: 1.25rem; }
+.prose-notes a { text-decoration: underline; text-underline-offset: 2px; }
+.prose-notes code { font-family: var(--font-mono); font-size: 0.85em; background: var(--color-paper); padding: 0.1em 0.3em; border-radius: 3px; }
+.prose-notes pre { background: var(--color-paper); padding: 0.75rem; overflow-x: auto; border-radius: 4px; }
+.prose-notes blockquote { border-left: 2px solid var(--color-rule-strong); padding-left: 0.9rem; color: var(--color-ink-2); }
+.prose-notes > :first-child { margin-top: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(23 22 15 / 0.45);
+}

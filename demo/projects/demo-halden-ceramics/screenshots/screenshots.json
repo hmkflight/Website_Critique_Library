@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "projectId": "demo-halden-ceramics",
+  "screenshots": [
+    {
+      "id": "shot-home-desktop-before",
+      "path": "screenshots/before/home-desktop.png",
+      "role": "BEFORE",
+      "capturedAt": "2026-09-15T13:40:00.000Z",
+      "page": "Home",
+      "viewport": {
+        "label": "Desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "pairId": "home-desktop",
+      "image": {
+        "width": 1440,
+        "height": 900
+      },
+      "demoVisual": true,
+      "reviewId": "review-001"
+    },
+    {
+      "id": "shot-home-mobile-before",
+      "path": "screenshots/before/home-mobile.png",
+      "role": "BEFORE",
+      "capturedAt": "2026-09-15T13:40:00.000Z",
+      "page": "Home",
+      "viewport": {
+        "label": "Mobile",
+        "width": 390,
+        "height": 844
+      },
+      "pairId": "home-mobile",
+      "image": {
+        "width": 390,
+        "height": 844
+      },
+      "demoVisual": true,
+      "reviewId": "review-001",
+      "caption": "Headline breaks mid-word (F-002)."
+    },
+    {
+      "id": "shot-shop-desktop-before",
+      "path": "screenshots/before/shop-desktop.png",
+      "role": "BEFORE",
+      "capturedAt": "2026-09-15T13:40:00.000Z",
+      "page": "Shop",
+      "viewport": {
+        "label": "Desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "pairId": "shop-desktop",
+      "image": {
+        "width": 1440,
+        "height": 900
+      },
+      "demoVisual": true,
+      "reviewId": "review-001"
+    },
+    {
+      "id": "shot-calendar-tablet-before",
+      "path": "screenshots/before/calendar-tablet.png",
+      "role": "BEFORE",
+      "capturedAt": "2026-09-15T13:40:00.000Z",
+      "page": "Calendar",
+      "viewport": {
+        "label": "Tablet",
+        "width": 834,
+        "height": 1194
+      },
+      "pairId": "calendar-tablet",
+      "image": {
+        "width": 834,
+        "height": 1194
+      },
+      "demoVisual": true,
+      "reviewId": "review-001",
+      "caption": "No after capture yet. Content pending (F-004)."
+    },
+    {
+      "id": "shot-contact-short-before",
+      "path": "screenshots/before/contact-short-mobile.png",
+      "role": "BEFORE",
+      "capturedAt": "2026-09-15T13:40:00.000Z",
+      "page": "Contact",
+      "viewport": {
+        "label": "Mobile",
+        "width": 375,
+        "height": 667
+      },
+      "pairId": "contact-mobile",
+      "image": {
+        "width": 375,
+        "height": 667
+      },
+      "demoVisual": true,
+      "reviewId": "review-001",
+      "caption": "Captured at short-mobile size by mistake. Demonstrates a mismatched pair."
+    },
+    {
+      "id": "shot-home-desktop-after",
+      "path": "screenshots/after/home-desktop-r1.png",
+      "role": "AFTER",
+      "capturedAt": "2026-09-16T16:10:00.000Z",
+      "page": "Home",
+      "viewport": {
+        "label": "Desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "pairId": "home-desktop",
+      "image": {
+        "width": 1440,
+        "height": 900
+      },
+      "demoVisual": true,
+      "revisionId": "revision-001"
+    },
+    {
+      "id": "shot-home-mobile-after",
+      "path": "screenshots/after/home-mobile-r1.png",
+      "role": "AFTER",
+      "capturedAt": "2026-09-16T16:10:00.000Z",
+      "page": "Home",
+      "viewport": {
+        "label": "Mobile",
+        "width": 390,
+        "height": 844
+      },
+      "pairId": "home-mobile",
+      "image": {
+        "width": 390,
+        "height": 844
+      },
+      "demoVisual": true,
+      "revisionId": "revision-001"
+    },
+    {
+      "id": "shot-shop-desktop-after",
+      "path": "screenshots/after/shop-desktop-r2.png",
+      "role": "AFTER",
+      "capturedAt": "2026-09-18T17:20:00.000Z",
+      "page": "Shop",
+      "viewport": {
+        "label": "Desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "pairId": "shop-desktop",
+      "image": {
+        "width": 1440,
+        "height": 900
+      },
+      "demoVisual": true,
+      "revisionId": "revision-002"
+    },
+    {
+      "id": "shot-contact-mobile-after",
+      "path": "screenshots/after/contact-mobile-r2.png",
+      "role": "AFTER",
+      "capturedAt": "2026-09-18T17:20:00.000Z",
+      "page": "Contact",
+      "viewport": {
+        "label": "Mobile",
+        "width": 390,
+        "height": 844
+      },
+      "pairId": "contact-mobile",
+      "image": {
+        "width": 390,
+        "height": 844
+      },
+      "demoVisual": true,
+      "revisionId": "revision-002"
+    }
+  ]
+}

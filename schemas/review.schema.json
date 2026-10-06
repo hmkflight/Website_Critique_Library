@@ -1,0 +1,292 @@
+{
+  "$id": "wcl/review.schema.json",
+  "title": "review (schemaVersion 1)",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^review-\\d{3,}$"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "reviewer": {
+      "default": "Claude Code",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "reviewedRevisionId": {
+      "default": null,
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^revision-\\d{3,}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reviewedCommit": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "IN_PROGRESS",
+        "COMPLETE",
+        "INCOMPLETE"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "strengths": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "detail": {
+            "default": "",
+            "type": "string",
+            "maxLength": 4000
+          },
+          "evidence": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "SCREENSHOT",
+                    "URL",
+                    "FILE",
+                    "NOTE"
+                  ]
+                },
+                "ref": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 200
+                }
+              },
+              "required": [
+                "kind",
+                "ref"
+              ]
+            }
+          }
+        },
+        "required": [
+          "title"
+        ]
+      }
+    },
+    "findings": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^F-\\d{3,}$"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "VISUAL",
+              "TYPOGRAPHY",
+              "COLOR",
+              "COMPOSITION",
+              "MOTION",
+              "CONTENT",
+              "CLIENT_SPECIFICITY",
+              "UX",
+              "RESPONSIVE",
+              "ACCESSIBILITY",
+              "FUNCTIONAL",
+              "PERFORMANCE",
+              "OTHER"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "BLOCKER",
+              "MAJOR",
+              "MODERATE",
+              "MINOR",
+              "KEEP"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "observation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 6000
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              },
+              "section": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "viewport": {
+                "type": "string",
+                "maxLength": 80
+              }
+            },
+            "required": [
+              "page"
+            ]
+          },
+          "evidence": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "SCREENSHOT",
+                    "URL",
+                    "FILE",
+                    "NOTE"
+                  ]
+                },
+                "ref": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 200
+                }
+              },
+              "required": [
+                "kind",
+                "ref"
+              ]
+            }
+          },
+          "recommendation": {
+            "default": "",
+            "type": "string",
+            "maxLength": 6000
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "IN_PROGRESS",
+              "FIXED",
+              "ACCEPTED",
+              "DEFERRED"
+            ]
+          },
+          "resolutionNotes": {
+            "type": "string",
+            "maxLength": 6000
+          },
+          "revisionIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^revision-\\d{3,}$"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "category",
+          "severity",
+          "title",
+          "observation",
+          "location",
+          "status"
+        ]
+      }
+    },
+    "missingInformation": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "READY_FOR_HUDSON",
+            "NEEDS_REVISION",
+            "BLOCKED"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8000
+        }
+      },
+      "required": [
+        "verdict",
+        "summary"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "id",
+    "createdAt",
+    "status",
+    "summary",
+    "assessment"
+  ]
+}

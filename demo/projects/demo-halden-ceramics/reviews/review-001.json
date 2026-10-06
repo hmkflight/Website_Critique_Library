@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "projectId": "demo-halden-ceramics",
+  "id": "review-001",
+  "createdAt": "2026-09-15T14:00:00.000Z",
+  "reviewer": "Claude Code (demo sample, not a real review)",
+  "reviewedRevisionId": null,
+  "reviewedCommit": "a1b2c3d",
+  "status": "COMPLETE",
+  "summary": "Sample critique of the original Codex build. The asymmetric editorial concept is strong and should be preserved. Problems are concentrated in mobile layout, contrast on glaze-colored backgrounds, and a broken checkout link.",
+  "strengths": [
+    { "title": "Asymmetric editorial hero", "detail": "The offset product photograph and oversized serif headline give the studio a gallery feel that generic shop templates lack." },
+    { "title": "Slow glaze-reveal motion", "detail": "The 1.2s clip reveal on the hero image echoes glaze pouring. It is meaningful, not decorative." },
+    { "title": "Specific, warm copy", "detail": "Product descriptions name clay bodies and firing temperatures, which reads as the real studio voice." }
+  ],
+  "findings": [
+    {
+      "id": "F-001", "category": "FUNCTIONAL", "severity": "BLOCKER",
+      "title": "“Add to cart” links to a 404 on every product",
+      "observation": "All six product pages point the primary button at /cart/add, which returns 404. No purchase is possible.",
+      "location": { "page": "Product detail", "section": "Purchase panel", "viewport": "All" },
+      "evidence": [ { "kind": "NOTE", "ref": "GET /cart/add → 404 in dev server log" } ],
+      "recommendation": "Wire the button to the existing cart action in lib/cart.ts and add a success state.",
+      "status": "OPEN", "revisionIds": []
+    },
+    {
+      "id": "F-002", "category": "RESPONSIVE", "severity": "MAJOR",
+      "title": "Hero headline overflows on mobile",
+      "observation": "At 390px the 96px headline breaks mid-word and pushes the hero image below the fold.",
+      "location": { "page": "Home", "section": "Hero", "viewport": "Mobile 390×844" },
+      "evidence": [ { "kind": "SCREENSHOT", "ref": "shot-home-mobile-before", "label": "Home, mobile, before" } ],
+      "recommendation": "Use a fluid clamp() size and keep the asymmetric offset; do not center the composition.",
+      "status": "OPEN", "revisionIds": []
+    },
+    {
+      "id": "F-003", "category": "ACCESSIBILITY", "severity": "MAJOR",
+      "title": "Body text on celadon panels fails contrast",
+      "observation": "#8FA89A text on #DCE5DF measures 2.3:1.",
+      "location": { "page": "About", "section": "Process panels", "viewport": "All" },
+      "evidence": [],
+      "recommendation": "Darken the text to the existing ink token; keep the celadon panel color.",
+      "status": "OPEN", "revisionIds": []
+    },
+    {
+      "id": "F-004", "category": "CONTENT", "severity": "MAJOR",
+      "title": "Kiln calendar uses placeholder dates",
+      "observation": "The firing calendar lists “Lorem firing” on three dates. The brief requires real seasonal dates, which were not provided.",
+      "location": { "page": "Calendar", "section": "Upcoming firings" },
+      "evidence": [],
+      "recommendation": "Obtain dates from the client, or hide the section until they exist.",
+      "status": "OPEN", "revisionIds": []
+    },
+    {
+      "id": "F-005", "category": "COMPOSITION", "severity": "MODERATE",
+      "title": "Shop grid repeats identical cards",
+      "observation": "Twelve equal cards flatten the editorial rhythm established on the home page.",
+      "location": { "page": "Shop", "viewport": "Desktop 1440×900" },
+      "evidence": [ { "kind": "SCREENSHOT", "ref": "shot-shop-desktop-before" } ],
+      "recommendation": "Introduce one feature tile per row using the hero’s offset grid.",
+      "status": "OPEN", "revisionIds": []
+    },
+    {
+      "id": "F-006", "category": "MOTION", "severity": "MINOR",
+      "title": "Glaze reveal ignores reduced-motion preference",
+      "observation": "The reveal still plays with prefers-reduced-motion: reduce.",
+      "location": { "page": "Home", "section": "Hero" },
+      "evidence": [],
+      "recommendation": "Show the final frame immediately when reduced motion is requested.",
+      "status": "OPEN", "revisionIds": []
+    },
+    {
+      "id": "F-007", "category": "VISUAL", "severity": "KEEP",
+      "title": "Hand-drawn section dividers",
+      "observation": "The brush-stroke dividers are distinctive and specific to a ceramics studio. Keep them through revisions.",
+      "location": { "page": "All pages" },
+      "evidence": [],
+      "recommendation": "",
+      "status": "OPEN", "revisionIds": []
+    }
+  ],
+  "missingInformation": [ "Real kiln firing dates for the calendar.", "Whether the shop ships internationally." ],
+  "assessment": { "verdict": "NEEDS_REVISION", "summary": "Sample assessment: a distinctive concept worth keeping. Fix the checkout blocker and the mobile hero before anything else. The layout does not need to be redesigned." }
+}

@@ -1,0 +1,223 @@
+{
+  "$id": "wcl/revision.schema.json",
+  "title": "revision (schemaVersion 1)",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^revision-\\d{3,}$"
+    },
+    "number": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "changes": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "findingIds": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^F-\\d{3,}$"
+            }
+          }
+        },
+        "required": [
+          "description"
+        ]
+      }
+    },
+    "filesTouched": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      }
+    },
+    "addressedFindingIds": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^F-\\d{3,}$"
+      }
+    },
+    "newFindingIds": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^F-\\d{3,}$"
+      }
+    },
+    "findingUpdates": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "findingId": {
+            "type": "string",
+            "pattern": "^F-\\d{3,}$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "IN_PROGRESS",
+              "FIXED",
+              "ACCEPTED",
+              "DEFERRED"
+            ]
+          },
+          "resolutionNotes": {
+            "type": "string",
+            "maxLength": 6000
+          }
+        },
+        "required": [
+          "findingId",
+          "status"
+        ]
+      }
+    },
+    "commit": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "screenshotIds": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^shot-[a-z0-9-]{1,80}$"
+      }
+    },
+    "browserChecks": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "viewport": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "command": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL",
+              "NOT_RUN",
+              "UNAVAILABLE"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        },
+        "required": [
+          "name",
+          "result"
+        ]
+      }
+    },
+    "validation": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "viewport": {
+            "type": "string",
+            "maxLength": 80
+          },
+          "command": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FAIL",
+              "NOT_RUN",
+              "UNAVAILABLE"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        },
+        "required": [
+          "name",
+          "result"
+        ]
+      }
+    },
+    "limitations": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "id",
+    "number",
+    "createdAt",
+    "summary"
+  ]
+}

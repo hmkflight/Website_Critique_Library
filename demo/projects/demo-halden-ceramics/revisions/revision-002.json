@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "projectId": "demo-halden-ceramics",
+  "id": "revision-002",
+  "number": 2,
+  "createdAt": "2026-09-18T17:30:00.000Z",
+  "summary": "Sample revision: accessible quantity stepper, reduced-motion support, and a feature tile in the shop grid.",
+  "changes": [
+    { "description": "Rebuilt the quantity stepper with native buttons and aria-labels.", "findingIds": ["F-008"] },
+    { "description": "Glaze reveal now renders its final frame when prefers-reduced-motion is set.", "findingIds": ["F-006"] },
+    { "description": "Added an offset feature tile as the first item of each shop row.", "findingIds": ["F-005"] }
+  ],
+  "filesTouched": ["components/quantity-stepper.tsx", "components/hero.tsx", "app/shop/page.tsx"],
+  "addressedFindingIds": ["F-005", "F-006", "F-008"],
+  "newFindingIds": [],
+  "findingUpdates": [
+    { "findingId": "F-008", "status": "FIXED", "resolutionNotes": "Tab reaches both buttons; verified with keyboard only." },
+    { "findingId": "F-006", "status": "FIXED", "resolutionNotes": "Checked with reduced motion emulated in DevTools." },
+    { "findingId": "F-005", "status": "IN_PROGRESS", "resolutionNotes": "Desktop done; tablet rhythm still uneven." }
+  ],
+  "commit": "9f8e7d6",
+  "screenshotIds": ["shot-shop-desktop-after"],
+  "browserChecks": [
+    { "name": "Keyboard navigation of product page", "viewport": "Desktop 1440×900", "result": "PASS" },
+    { "name": "Reduced-motion hero", "viewport": "Desktop 1440×900", "result": "PASS" },
+    { "name": "Shop grid rhythm", "viewport": "Tablet 834×1194", "result": "PASS", "notes": "Usable; spacing to refine." }
+  ],
+  "validation": [
+    { "name": "Lint", "command": "npm run lint", "result": "PASS" },
+    { "name": "Production build", "command": "npm run build", "result": "PASS" },
+    { "name": "Lighthouse performance", "result": "UNAVAILABLE", "notes": "Lighthouse not installed in this environment." }
+  ],
+  "limitations": ["Calendar still shows placeholder dates (F-004).", "Lighthouse was not run."]
+}

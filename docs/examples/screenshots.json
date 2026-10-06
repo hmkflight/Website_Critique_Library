@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "projectId": "example-client-site",
+  "screenshots": [
+    {
+      "id": "shot-home-mobile-before",
+      "path": "screenshots/before/home-mobile.png",
+      "role": "BEFORE",
+      "capturedAt": "2026-10-01T09:50:00.000Z",
+      "page": "Home",
+      "viewport": { "label": "Mobile", "width": 390, "height": 844 },
+      "pairId": "home-mobile",
+      "reviewId": "review-001",
+      "image": { "width": 390, "height": 844 }
+    },
+    {
+      "id": "shot-home-mobile-after",
+      "path": "screenshots/after/home-mobile-r1.png",
+      "role": "AFTER",
+      "capturedAt": "2026-10-01T11:55:00.000Z",
+      "page": "Home",
+      "viewport": { "label": "Mobile", "width": 390, "height": 844 },
+      "pairId": "home-mobile",
+      "revisionId": "revision-001",
+      "image": { "width": 390, "height": 844 }
+    }
+  ]
+}
